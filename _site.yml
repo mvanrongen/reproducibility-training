@@ -1,0 +1,11 @@
+name: "into-reproducibility"
+output_dir: "."
+navbar:
+  title: "Reproducibility in action"
+  left:
+    - text: "Rmarkdown"
+      href: rmarkdown.html
+    - text: "Git"
+      href: git.html
+output:
+  html_document
