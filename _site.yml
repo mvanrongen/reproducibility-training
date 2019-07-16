@@ -1,5 +1,4 @@
 name: "reproducibility-training"
-output_dir: "."
 navbar:
   title: "Reproducibility in action"
   left:
