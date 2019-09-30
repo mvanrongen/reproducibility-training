@@ -1,6 +1,7 @@
 name: "reproducibility-training"
+output_dir: "."
 navbar:
-  title: "Reproducibility in action"
+  title: "Reproducible research in R"
   left:
     - text: "Rmarkdown"
       href: rmarkdown.html
