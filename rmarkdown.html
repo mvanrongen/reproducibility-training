@@ -363,21 +363,61 @@ div.tocify {
 </div>
 
 
-<div id="what-are-r-notebooks" class="section level1">
-<h1>What are R notebooks?</h1>
-<!-- Next show them an example of notebooks that they will be learning how to do today. -->
+<div id="rstudio" class="section level1">
+<h1>RStudio</h1>
+<p>We will be using RStudio both for this Rmarkdown session and also during the GitHub session. RStudio is currently a very popular Integrated Development Environment (IDE) for working with R. An IDE is an application used by software developers that faciliates programming by offering source code editing, building and debugging tools all integarated into one application. To function correctly, RStudio needs R and therefore both need to be installed on your computer.</p>
+<p>The RStudio Desktop open-source product is free under the <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">Affero General Public License (AGPL) v3</a>. <a href="https://www.rstudio.com/products/rstudio/">Other versions of RStudio</a> are also available.</p>
+<p>We will use RStudio IDE to write code, navigate the files on our computer, inspect the variables we are going to create, and visualize the plots, tables and the notebooks that we will generate. RStudio can also be used for version control and we will be looking at this later on.</p>
+<div class="figure">
+<img src="img/rstudio-screenshot.png" alt="RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console." />
+<p class="caption">RStudio interface screenshot. Clockwise from top left: Source, Environment/History, Files/Plots/Packages/Help/Viewer, Console.</p>
+</div>
+<p>RStudio is divided into 4 “Panes”: the <strong>Source</strong> for your scripts and documents (top-left, in the default layout), your <strong>Environment/History/Build/Git</strong> (top-right), your <strong>Files/Plots/Packages/Help/Viewer</strong> (bottom-right), and the R <strong>Console</strong> (bottom-left). The placement of these panes and their content can be customized (see menu, Tools -&gt; Global Options -&gt; Pane Layout).</p>
+<p>One of the advantages of using RStudio is that all the information you need to write code is available in a single window. Additionally, with many shortcuts, autocompletion, and highlighting for the major file types you use while developing in R, RStudio will make typing easier and less error-prone.</p>
 <p> </p>
-<div id="creating-an-rmarkdown-documents" class="section level2">
-<h2>Creating an Rmarkdown documents</h2>
-<p>To create an R notebook in RStudio follow the following steps: 1. File &gt; New Project &gt; New Directory &gt; Simple Rmarkdown website 2. Specify where you would like to create your project 3. Click Create Project</p>
+</div>
+<div id="creating-an-rmarkdown-project" class="section level1">
+<h1>Creating an Rmarkdown project</h1>
+<p>Before starting to write code in RStudio, we need to create an R Project. The idea behind an R project is to have a workspace where you can keep all the files and settings associated with the project together. In that way, next time you open the R Project it would be easier to resume work. To create an R notebook project for the web in RStudio follow the following steps:</p>
+<ol style="list-style-type: decimal">
+<li><code>File</code> -&gt; <code>New Project</code> -&gt; <code>New Directory</code> -&gt; <code>Simple Rmarkdown website</code>.</li>
+<li>Specify where you would like to create your project. This would be your <strong>working directory</strong>.<br />
+</li>
+<li>Click <code>Create Project</code>.</li>
+</ol>
 <p>RStudio automatically generates a template for you to develop further. To see how this template would look as a website, click on the <code>Build</code> tab on the top right hand side pane of RStudio and then click <code>Build Website</code>.</p>
 <p><img src="img/build-website.png" width="400"/></p>
+<p>RStudio’s default preferences generally work well, but saving a workspace to <code>.RData</code> can be cumbersome, especially if you are working with larger datasets as this would save all the data that is loaded into R into the <code>.RData</code> file.<br />
+To turn that off, go to <code>Tools</code> -&gt; <code>Global Options</code> and select the ‘Never’ option for <code>Save workspace to .RData' on exit.</code></p>
+<div class="figure">
+<img src="img/rstudio-preferences.png" alt="Set ‘Save workspace to .RData on exit’ to ‘Never’" />
+<p class="caption">Set ‘Save workspace to .RData on exit’ to ‘Never’</p>
+</div>
+<p> </p>
+<div id="working-directory" class="section level2">
+<h2>Working directory</h2>
+<p>Whenever we are working on a project in RStudio, it is good practice to keep a set of related files <em>e.g.,</em> data, images, and code, self-contained in a single folder, called the <strong>working directory</strong>. All of the scripts within this folder can then use <strong>relative paths</strong> to files in the working directory that indicate where inside the project a file is located (as opposed to <strong>absolute paths</strong>, which point to where a file is on a specific computer). Working this way makes it a lot easier to move your project around on your computer and share it with others without worrying about whether or not the underlying scripts will still work.</p>
+<blockquote>
+<p><strong>Absolute vs Relative paths examples</strong></p>
+<p><strong>Relative path</strong>: data/dataset1.txt</p>
+<p><strong>Absolute path</strong>: C:/Users/User1/Documents/R/my-first-project/<strong>data/dataset1.txt</strong></p>
+</blockquote>
+<p>Using RStudio projects makes it easy to organise your files in the project and ensures that your working directory is set properly. RStudio shows your current working directory at the top of your window: <img src="img/rstudio-wd.png" alt="’" /></p>
+<p>Another way to check your working directory is by typing <code>getwd()</code> in the console pane. If for some reason your working directory is not what it should be, you can change it in the RStudio interface by navigating in the file browser where your working directory should be, and clicking on the blue gear icon <code>More</code>, and select <code>Set As Working Directory</code>. Alternatively you can type <code>setwd("/path/to/working/directory")</code> in the console to reset your working directory (not recommended). However, your scripts should not include this line because it will fail on someone else’s computer.</p>
+<p>Using a consistent folder structure across your projects will help keep things organized, and will also make it easy to find things in the future. This can be especially helpful when you have multiple projects. In general, you may create directories (folders) for <strong>data</strong>, and <strong>images</strong>.</p>
+<ul>
+<li><strong><code>data/</code></strong> Use this folder to store your raw data and intermediate datasets you may create for the need of a particular analysis. For the sake of transparency and <a href="https://en.wikipedia.org/wiki/Provenance">provenance</a>, you should <em>always</em> keep a copy of your raw data accessible and do as much of your data cleanup and preprocessing programmatically (<em>i.e.,</em> with scripts, rather than manually). Separating raw data from processed data is also a good idea. For example, you could have files <code>data/raw/survey.plot1.txt</code> and <code>data/raw/survey.plot2.txt</code> kept separate from a <code>data_output/survey.csv</code> file generated by the <code>scripts/01.preprocess.survey.R</code> script.</li>
+<li><strong><code>img/</code></strong> This would be a place to keep figures that you would like to display in your notebook.</li>
+<li><strong><code>scripts/</code></strong> This would be the location to keep your R scripts for different analyses or plotting.</li>
+</ul>
+<p>You may want additional directories or subdirectories depending on your project needs, but these should form the backbone of your working directory.</p>
+<p>The working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.</p>
 <p><br />
 </p>
 </div>
 </div>
-<div id="getting-started-with-rmarkdown" class="section level1">
-<h1>Getting started with Rmarkdown</h1>
+<div id="rmarkdown" class="section level1">
+<h1>Rmarkdown</h1>
 <p>An Rmarkdown file is made up of 3 basic components:</p>
 <ul>
 <li>header</li>
@@ -686,15 +726,18 @@ link-citations: yes
 </div>
 <div id="r-code-chunks" class="section level2">
 <h2>R code chunks</h2>
-<p>So far we have not used any R code and all the code we used so far is in Markdown. When we insert R code chunks into the document, the document becomes an Rmarkdown. Rmarkdown files have a <code>.Rmd</code> extention. Using R in a markdown document makes sense if we integrate our analysis in our report. Some operations that we might need to do are; loading our dataset, performing some operations on the dataset and displaying results, either in a table or in a plot. We will be doing all this in the following sections.</p>
+<p>So far we have not used any R code and all the code we used so far is in Markdown. As the name suggests, Rmarkdown files contain markdown and R. Rmarkdown files have a <code>.Rmd</code> extention. Using R in a markdown document makes sense if we integrate our analysis in our report. Some operations that we might need to do are; loading our dataset, performing some operations on the dataset and displaying results, either in a table or in a plot. We will be doing all this in the following sections.</p>
 <p>If you would like to insert R code inside the notebook you will have to insert it inside an R code chunk to be able to execute it. To do this either click on the <code>Insert</code> button at the top of the Source panel in RStudio:</p>
 <p><img src="img/insert-r-chunk.png" width=150/></p>
 <p>This creates an <strong>R code chunk</strong> as follows: <img src="img/r-chunk.png" /></p>
-<p>The R code should be placed in between the triple backticks. Note that on the right hand side of the R code chunk there is a green “play” button that will run the R code chunk if pressed. By default, when the Rmarkdown document is knitted, the R code will be executed and the R code chunk is displayed before the executed code.</p>
+<p>Alternatively, you can type the r code chunk. The R code should be placed in between the triple backticks. Note that on the right hand side of the R code chunk there is a green “play” button that will run the R code chunk if pressed. By default, when the Rmarkdown document is knitted, the R code will be executed and the R code chunk is displayed before the executed code.</p>
 <p><a href="RNotebookExample.Rmd">Click here</a> for an example of an R Notebook. The sections below will go over the differet parts of the R Notebook. Add RNotebookExample.Rmd to your existing R project.</p>
-<div id="understanding-data" class="section level3">
-<h3>Understanding data</h3>
-<p>RNotebookExample.Rmd uses data from gapminder. The <code>gapminder_data.csv</code> dataset that is loaded into the notebook contains the life expectancy and GDP per capita data for each country per year from 1952 to 2007. The dataset has the following columns:</p>
+<p> </p>
+<div id="the-dataset" class="section level3">
+<h3>The dataset</h3>
+<p><a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a> uses data from <a href="https://www.gapminder.org/">gapminder</a>. Let us download the <code>gapminder_data.csv</code> dataset into our project. Create a <code>data</code> folder in your working directory. Download the dataset into the <code>data</code> folder as follows:</p>
+<pre><code>download.file(url=&quot;https://github.com/cambiotraining/reproducibility-training/blob/master/data/gapminder_data.csv&quot;, destfile=&quot;data/gapminder_data.csv&quot;)</code></pre>
+<p>The <code>gapminder_data.csv</code> dataset that is loaded into the notebook contains the life expectancy and GDP per capita data for each country per year from 1952 to 2007. The dataset has the following columns:</p>
 <table>
 <thead>
 <tr class="header">
@@ -730,15 +773,16 @@ link-citations: yes
 </tbody>
 </table>
 <p>The dataset contains data for different countries in the world. For our analysis we would like to look at only the European countries in the dataset. This means that we would need to manipulate the dataset before we can display the results.</p>
+<p> </p>
 </div>
 <div id="chunk-options" class="section level3">
 <h3>Chunk options</h3>
-<p>As mentioned, by default the chuck output will be displayed exactly after the R code chunk and the R code chunk is displayed in the rendered page. If you would like to have different settings, you can specify these as arguments in the <code>{}</code> part of the R code chunk.</p>
+<p>As mentioned, by default the chuck output will be displayed exactly after the R code chunk and the R code chunk is also displayed in the rendered page. If you would like to have different settings, you can specify these as arguments in the <code>{}</code> part of the R code chunk.</p>
 <p>These chunk options include:</p>
 <ul>
 <li><code>include = FALSE</code> do not display the code and results in the page after it is knitted. The R code however still runs and therefore the variables or results in this code chunk can be used by the other chunks.<br />
 </li>
-<li><code>echo = FALSE</code> does not display the code, but it displays the resylts in the rendered file.<br />
+<li><code>echo = FALSE</code> does not display the code, but it displays the results in the rendered file.<br />
 </li>
 <li><code>message = FALSE</code> does not display an messages that are generated by the code chunk in the rendered file.<br />
 </li>
@@ -752,13 +796,19 @@ link-citations: yes
 <h3>Tables in Rmarkdown</h3>
 <p>When you have a large dataset, creating a table manually in rmarkdown as we did <a href="#tables">here</a> is not really feasible. Also if you are really trying to make your research reproducible, then, you will need to generate most of the tables dynamically and therefore you will not be able to manually type them in markdown. This is where Rmarkdown comes in as there is a way to display tables dynamically. In <a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a>, the data was first loaded and then after some manipulation, the table was displayed by using the <code>kable</code> function and passing in the table variable as its argument. More information about <code>kable</code> can be found in its <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">documentation</a>.</p>
 <p>If you have a very long table to display, the best way would be to use pagination where the contents of the table are split into multiple tabs. The function <code>paged_table</code> in the <code>rmarkdown</code> library can be used to do this (see example in <a href="RNotebookExample.Rmd">RNotebookExample.Rmd</a>).</p>
+<p> </p>
 </div>
 </div>
 </div>
 <div id="summary" class="section level1">
 <h1>Summary</h1>
-<p>Advantage: readable way to creat website/report disadvantage: not customizable Does not include numbering of tables and figure. This can be achieved by third-party methods. <!-- https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html--></p>
-<p>As you can see it is relatively easy to create a web page report with Markdown syntax. If you want further customisations that are different from the default Markdown format however, <em>e.g.,</em> Headings using different font specifications, then this gets trickier and markdown might not be the</p>
+<p>Through R notebooks we can now integrate our R code and our results in one readable document that we can share with our collaborators. In this way the code and the results have become one item. For inspiration, examples of R notebooks can be found at <a href="https://rpubs.com/" class="uri">https://rpubs.com/</a></p>
+<p><strong>Limitations:</strong></p>
+<p>Some limitations that Rmarkdown has:</p>
+<ul>
+<li>Figure and table numbering is not supported. There is still a way around this, by using third-party packages <em>e.g.,</em> <a href="https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html">captioner</a>.</li>
+<li>If you are looking at specific customisations that are different from the default Markdown format, <em>e.g.,</em> headings using different font specifications, then this gets tricky and markdown might not be the best approach.</li>
+</ul>
 <p><br />
 </p>
 </div>
