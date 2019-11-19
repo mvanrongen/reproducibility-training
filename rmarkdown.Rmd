@@ -147,7 +147,7 @@ The full documentation of the Markdown syntax can be found at https://pandoc.org
 
 ### Headings
 
-Below is the `Mardown code` you need to use to specify headings at different levels and the rendered output respectively below the code:
+Below is the `Markdown code` you need to use to specify headings at different levels and the rendered output respectively below the code:
 
 `# Heading 1`
 
@@ -483,7 +483,7 @@ The dataset contains data for different countries in the world.  For our analysi
 
 ### Chunk options
 
-As mentioned, by default the chuck output will be displayed exactly after the R code chunk and the R code chunk is also displayed in the rendered page.  If you would like to have different settings, you can specify these as arguments in the `{}` part of the R code chunk.
+As mentioned, by default the chunk output will be displayed exactly after the R code chunk and the R code chunk is also displayed in the rendered page.  If you would like to have different settings, you can specify these as arguments in the `{}` part of the R code chunk.
 
 These chunk options include:
 
