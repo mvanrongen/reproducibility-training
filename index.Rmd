@@ -4,10 +4,11 @@ author:  Alexia Cardona
 ---
 
 <br/>
-1 October 2019   
+18 February 2020 
+
 Bioinformatics Training Facility
 
-**Instructor:** Alexia Cardona, Paul Judge
+**Instructor:** Alexia Cardona, Paul Judge, Martin van Rongen
 
 <br/>
 
