@@ -310,6 +310,12 @@ div.tocify {
   border-radius: 0px;
 }
 
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
 
 </style>
 
@@ -418,8 +424,11 @@ To turn that off, go to <code>Tools</code> -&gt; <code>Global Options</code> and
 </ul>
 <p>You may want additional directories or subdirectories depending on your project needs, but these should form the backbone of your working directory.</p>
 <p>The working directory is an important concept to understand. It is the place from where R will be looking for and saving the files. When you write code for your project, it should refer to files in relation to the root of your working directory and only need files within this structure.</p>
-<p><br />
-# Rmarkdown</p>
+<p> </p>
+</div>
+</div>
+<div id="rmarkdown" class="section level1">
+<h1>Rmarkdown</h1>
 <p>An Rmarkdown file is made up of 3 basic components:</p>
 <ul>
 <li>header</li>
@@ -427,14 +436,13 @@ To turn that off, go to <code>Tools</code> -&gt; <code>Global Options</code> and
 <li>R code chunks</li>
 </ul>
 <p>In this course we will assume that the output of our report is an .html file. HTML files are files for web pages. This means that the report that we will generate can be easily deployed on the web.</p>
-</div>
 <div id="rmarkdown-header" class="section level2">
 <h2>Rmarkdown header</h2>
 <p>The markdown document starts with an optional header in YAML format known as the YAML metadata. In the example below the title, author and date are specified in the header. Other options can be specified in the header such as table of content which we will look at later on in the course.</p>
 <pre><code>---
 title: &quot;My first notebook&quot;
 author:  Alexia Cardona
-date: 1 October 2019
+date: 18 February 2020
 ---</code></pre>
 <blockquote>
 <p><strong>Hint</strong></p>
@@ -476,30 +484,35 @@ To make text <sup>superscript</sup> use <code>^caret^</code>.<br />
 To make text <sub>subscript</sub> use <code>~tilde~</code>.<br />
 To mark text as <code>inline code</code> use <code>`backticks`</code>.<br />
 To <del>strikethrough</del> text use <code>~~double tilde~~</code>.</p>
-<p><br />
-### Line breaks To create a line break, put more than 2 spaces at the end of a sentence or place <code>\</code> in a new line followed by a new line <img src="img/enter.png" width="20"/>.</p>
-<p><br />
-### Links</p>
+<p> </p>
+</div>
+<div id="line-breaks" class="section level3">
+<h3>Line breaks</h3>
+<p>To create a line break, put more than 2 spaces at the end of a sentence or place <code>\</code> in a new line followed by a new line <img src="img/enter.png" width="20"/>.</p>
+<p> </p>
+</div>
+<div id="links" class="section level3">
+<h3>Links</h3>
 <div id="linking-text-to-headers" class="section level4">
 <h4>Linking text to Headers</h4>
 <p>To link text to a header you would need to specify an identification tag next to a header as follows:</p>
 <p><code># Markdown {#markdown-header}</code></p>
 <p>Then to link text to this header use <code>[link to header](#markdown-header)</code>. This will be rendered as <a href="#markdown-header">link to header</a>.</p>
-<p><br />
-</p>
+<p> </p>
 </div>
 <div id="linking-text-to-a-webpage" class="section level4">
 <h4>Linking text to a webpage</h4>
 <p>To create a link to a webpage use <code>[text of link](https://training.cam.ac.uk/bioinformatics/event-timetable)</code>. This is rendered as <a href="https://training.cam.ac.uk/bioinformatics/event-timetable">text of link</a>.</p>
-<p><br />
-#### Footnotes</p>
+<p> </p>
+</div>
+<div id="footnotes" class="section level4">
+<h4>Footnotes</h4>
 <p>To indicate a footnote use<code>[^1]</code> and, for example, indicate another one as<code>[^2]</code> and then specify the wordings of the footnotes as:</p>
 <p><code>[^1]: This is the first footnote.</code><br />
 <code>[^2]: This is the second footnote.</code></p>
 <p>You do not need to put footnotes at the end of the document for them to be rendered there. This example is rendered as follows:</p>
 <p>To indicate a footnote use<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> and, for example, indicate another one as<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> and then specify the wordings of the footnotes as:</p>
-<p><br />
-</p>
+<p> </p>
 </div>
 </div>
 <div id="lists" class="section level3">
@@ -541,8 +554,10 @@ To <del>strikethrough</del> text use <code>~~double tilde~~</code>.</p>
 </ol></li>
 <li>Item 4</li>
 </ol>
-<p><br />
-#### Unordered lists</p>
+<p> </p>
+</div>
+<div id="unordered-lists" class="section level4">
+<h4>Unordered lists</h4>
 <p>In an unordered bulletted list, each item begins with <code>*</code>, <code>+</code> or <code>-</code>. Example:</p>
 <pre><code>* Item 1
 * Item 2
@@ -581,16 +596,22 @@ To <del>strikethrough</del> text use <code>~~double tilde~~</code>.</p>
 <li>[ ] an unchecked task list item</li>
 <li>[x] checked item</li>
 </ul>
-<p><br />
-### Inserting images To insert an image use the following syntax: <code>![Figure caption](path to image)</code>. Example:</p>
+<p> </p>
+</div>
+</div>
+<div id="inserting-images" class="section level3">
+<h3>Inserting images</h3>
+<p>To insert an image use the following syntax: <code>![Figure caption](path to image)</code>. Example:</p>
 <p><code>![R Logo](img/Rlogo.png)</code></p>
 <p>Will be rendered as:</p>
 <div class="figure">
 <img src="img/Rlogo.png" alt="R Logo" />
 <p class="caption">R Logo</p>
 </div>
-<p><br />
-### Tables {#tables}</p>
+<p> </p>
+</div>
+<div id="tables" class="section level3">
+<h3>Tables</h3>
 <p>Use <code>|</code>and <code>-</code> to create a table as follows:</p>
 <pre><code>| Column 1    | Column 2    |
 | ----------- | ----------- |
@@ -642,8 +663,11 @@ To <del>strikethrough</del> text use <code>~~double tilde~~</code>.</p>
 </tr>
 </tbody>
 </table>
-<p><br />
-### Blocks Blocks in the notebook can be created by using the <code>&gt;</code> sign as follows: <code>&gt; Example of a block</code></p>
+<p> </p>
+</div>
+<div id="blocks" class="section level3">
+<h3>Blocks</h3>
+<p>Blocks in the notebook can be created by using the <code>&gt;</code> sign as follows: <code>&gt; Example of a block</code></p>
 <p>This is rendered as:</p>
 <blockquote>
 <p>Example of a block</p>
@@ -658,8 +682,10 @@ print(x)
 <pre><code>print(&quot;Hello world&quot;)
 x &lt;- 1+2
 print(x)</code></pre>
-<p><br />
-### Adding a table of contents</p>
+<p> </p>
+</div>
+<div id="adding-a-table-of-contents" class="section level3">
+<h3>Adding a table of contents</h3>
 <p>To add a table of contents to your report add the following to the YAML header:</p>
 <pre><code>output:
   html_document:
@@ -669,16 +695,18 @@ print(x)</code></pre>
   html_document:
     toc: true
     toc_depth: 4</code></pre>
-<p><br />
-### Adding references</p>
-<p>Adding references and citations in Markdown is not as easy as reference manager software such as Mendeley. To be able to create citations you will need to create a bibliography file with all the references in it. Here is an example of bibliography file. <!--insert link here-->. The bibligraphy file has to be placed in the same folder as the one where the <code>.Rmd</code> file is. Next, add the following to the YAML header:</p>
+<p> </p>
+</div>
+<div id="adding-references" class="section level3">
+<h3>Adding references</h3>
+<p>Adding references and citations in Markdown is not as easy as reference manager software such as Mendeley. To be able to create citations you will need to create a bibliography file with all the references in it. Here is an <a href="references.bib">example of a bibliography file</a>. The bibligraphy file has to be placed in the same folder as the one where the <code>.Rmd</code> file is. Next, add the following to the YAML header:</p>
 <pre><code>bibliography: references.bib
 link-citations: yes</code></pre>
 <p>Your YAML header should now look like:</p>
 <pre><code>---
 title: &quot;My first notebook&quot;
 author:  Alexia Cardona
-date: 1 October 2019
+date: 18 February 2020
 bibliography: references.bib
 link-citations: yes
 ---</code></pre>
@@ -690,8 +718,11 @@ link-citations: yes
 <p><code># References</code></p>
 <p>See <a href="#refs">references</a> at the end of the report.</p>
 <p>See <a href="https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html" class="uri">https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</a> for more information.</p>
-<p><br />
-## R code chunks</p>
+<p> </p>
+</div>
+</div>
+<div id="r-code-chunks" class="section level2">
+<h2>R code chunks</h2>
 <p>So far we have not used any R code and all the code we used so far is in Markdown. As the name suggests, Rmarkdown files contain markdown and R. Rmarkdown files have a <code>.Rmd</code> extention. Using R in a markdown document makes sense if we integrate our analysis in our report. Some operations that we might need to do are; loading our dataset, performing some operations on the dataset and displaying results, either in a table or in a plot. We will be doing all this in the following sections.</p>
 <p>If you would like to insert R code inside the notebook you will have to insert it inside an R code chunk to be able to execute it. To do this either click on the <code>Insert</code> button at the top of the Source panel in RStudio:</p>
 <p><img src="img/insert-r-chunk.png" width=150/></p>
@@ -699,8 +730,6 @@ link-citations: yes
 <p>Alternatively, you can type the r code chunk. The R code should be placed in between the triple backticks. Note that on the right hand side of the R code chunk there is a green “play” button that will run the R code chunk if pressed. By default, when the Rmarkdown document is knitted, the R code will be executed and the R code chunk is displayed before the executed code.</p>
 <p><a href="RNotebookExample.Rmd">Click here</a> for an example of an R Notebook. The sections below will go over the differet parts of the R Notebook. Add RNotebookExample.Rmd to your existing R project.</p>
 <p> </p>
-</div>
-</div>
 <div id="the-dataset" class="section level3">
 <h3>The dataset</h3>
 <p><a href="RNotebookExample.Rmd" class="uri">RNotebookExample.Rmd</a> uses data from <a href="https://www.gapminder.org/">gapminder</a>. Let us download the <code>gapminder_data.csv</code> dataset into our project. Create a <code>data</code> folder in your working directory. Download the dataset into the <code>data</code> folder as follows:</p>
@@ -757,8 +786,10 @@ link-citations: yes
 <li><code>warning = FALSE</code> does not display warnings that are generated by code chunk in the rendered file.</li>
 </ul>
 <p>A full list of options that can be used in the R code chunks is found <a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">here</a>.</p>
-<p><br />
-### Tables in Rmarkdown</p>
+<p> </p>
+</div>
+<div id="tables-in-rmarkdown" class="section level3">
+<h3>Tables in Rmarkdown</h3>
 <p>When you have a large dataset, creating a table manually in rmarkdown as we did <a href="#tables">here</a> is not really feasible. Also if you are really trying to make your research reproducible, then, you will need to generate most of the tables dynamically and therefore you will not be able to manually type them in markdown. This is where Rmarkdown comes in as there is a way to display tables dynamically. In <a href="RNotebookExample.Rmd" class="uri">RNotebookExample.Rmd</a>, the data was first loaded and then after some manipulation, the table was displayed by using the <code>kable</code> function and passing in the table variable as its argument. More information about <code>kable</code> can be found in its <a href="https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html">documentation</a>.</p>
 <p>If you have a very long table to display, the best way would be to use pagination where the contents of the table are split into multiple tabs. The function <code>paged_table</code> in the <code>rmarkdown</code> library can be used to do this (see example in <a href="RNotebookExample.Rmd" class="uri">RNotebookExample.Rmd</a>).</p>
 <p> </p>
@@ -774,8 +805,10 @@ link-citations: yes
 <li>Figure and table numbering is not supported. There is still a way around this, by using third-party packages <em>e.g.,</em> <a href="https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html">captioner</a>.</li>
 <li>If you are looking at specific customisations that are different from the default Markdown format, <em>e.g.,</em> headings using different font specifications, then this gets tricky and markdown might not be the best approach.</li>
 </ul>
-<p><br />
-# References {#refs}</p>
+<p> </p>
+</div>
+<div id="refs" class="section level1 unnumbered">
+<h1>References</h1>
 <div id="refs" class="references">
 <div id="ref-cardona2019">
 <p>Cardona, Alexia, Felix R. Day, John R.B. Perry, Marie Loh, Audrey Y. Chu, Benjamin Lehne, Dirk S. Paul, et al. 2019. “Epigenome-Wide Association Study of Incident Type 2 Diabetes in a British Population: EPIC-Norfolk Study.” <em>Diabetes</em>. American Diabetes Association. doi:<a href="https://doi.org/10.2337/db18-0290">10.2337/db18-0290</a>.</p>
@@ -848,7 +881,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = true;
+    options.showAndHide = false;
     options.smoothScroll = true;
 
     // tocify

@@ -5,7 +5,7 @@ output:
   html_document: 
     toc: true
     toc_float:
-      collapsed: true
+      collapsed: false
     toc_depth: 6
 ---
 
@@ -106,7 +106,7 @@ from where R will be looking for and saving the files. When you write code for
 your project, it should refer to files in relation to the root of your working
 directory and only need files within this structure.
 
-\
+\  
 
 # Rmarkdown
 
@@ -127,7 +127,7 @@ The markdown document starts with an optional header in YAML format known as the
 ---
 title: "My first notebook"
 author:  Alexia Cardona
-date: 1 October 2019
+date: 18 February 2020
 ---
 ```
 
@@ -177,12 +177,12 @@ To make text ~subscript~ use `~tilde~`.
 To mark text as `inline code` use `` `backticks` ``.   
 To  ~~strikethrough~~ text use `~~double tilde~~`.
 
-\
+\  
 
 ### Line breaks
 To create a line break, put more than 2 spaces at the end of a sentence or place `\` in a new line followed by a new line <img src="img/enter.png" width="20"/>.  
 
-\
+\  
 
 ### Links
 
@@ -194,14 +194,14 @@ To link text to a header you would need to specify an identification tag next to
 
 Then to link text to this header use `[link to header](#markdown-header)`.  This will be rendered as [link to header](#markdown-header).
 
-\
+\ 
 
 
 #### Linking text to a webpage
 
 To create a link to a webpage use `[text of link](https://training.cam.ac.uk/bioinformatics/event-timetable)`.  This is rendered as [text of link](https://training.cam.ac.uk/bioinformatics/event-timetable). 
 
-\
+\  
 
 #### Footnotes
 
@@ -217,7 +217,7 @@ To indicate a footnote use[^1] and, for example, indicate another one as[^2] and
 [^1]: This is the first footnote.  
 [^2]: This is the second footnote.
 
-\
+\  
 
 
 ### Lists
@@ -261,7 +261,7 @@ Use 4 spaces to indent an item if you would like to have sub-lists:
     c. Item 3c
 4. Item 4
 
-\
+\  
 
 #### Unordered lists
 
@@ -306,7 +306,7 @@ This will be rendered as:
 - [ ] an unchecked task list item
 - [x] checked item
 
-\
+\  
 
 ### Inserting images
 To insert an image use the following syntax: `![Figure caption](path to image)`.  Example:
@@ -317,8 +317,7 @@ Will be rendered as:
 
 ![R Logo](img/Rlogo.png)
 
-
-\
+\  
 
 ### Tables {#tables}
 
@@ -352,7 +351,7 @@ This is rendered as:
 | Item 1,1    | Item 1,2     | Item 1,3     | 
 | Item 2,1    | Item 2,2     | Item 2,3     |
 
-\
+\  
 
 ### Blocks
 Blocks in the notebook can be created by using the `>` sign as follows:
@@ -381,7 +380,7 @@ print("Hello world")
 x <- 1+2
 print(x)
 ```
-\
+\  
 
 ### Adding a table of contents
 
@@ -401,11 +400,11 @@ output:
     toc: true
     toc_depth: 4
 ```
-\
+\  
 
 ### Adding references
 
-Adding references and citations in Markdown is not as easy as reference manager software such as Mendeley. To be able to create citations you will need to create a bibliography file with all the references in it.  Here is an example of bibliography file. <!--insert link here-->.  The bibligraphy file has to be placed in the same folder as the one where the `.Rmd` file is.  Next, add the following to the YAML header:
+Adding references and citations in Markdown is not as easy as reference manager software such as Mendeley. To be able to create citations you will need to create a bibliography file with all the references in it.  Here is an [example of a bibliography file](references.bib).  The bibligraphy file has to be placed in the same folder as the one where the `.Rmd` file is.  Next, add the following to the YAML header:
 
 ```
 bibliography: references.bib
@@ -416,7 +415,7 @@ Your YAML header should now look like:
 ---
 title: "My first notebook"
 author:  Alexia Cardona
-date: 1 October 2019
+date: 18 February 2020
 bibliography: references.bib
 link-citations: yes
 ---
@@ -439,7 +438,7 @@ See [references](#refs) at the end of the report.
 
 See https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html for more information.  
 
-\
+\  
 
 ## R code chunks
 
@@ -494,7 +493,7 @@ These chunk options include:
 
 A full list of options that can be used in the R code chunks is found [here](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 
-\
+\  
 
 ### Tables in Rmarkdown
 
@@ -515,6 +514,6 @@ Some limitations that Rmarkdown has:
 * Figure and table numbering is not supported.  There is still a way around this, by using third-party packages *e.g.,* [captioner](https://cran.r-project.org/web/packages/captioner/vignettes/using_captioner.html).
 *  If you are looking at specific customisations that are different from the default Markdown format, *e.g.,* headings using different font specifications, then this gets tricky and markdown might not be the best approach.  
 
-\
+\  
 
 # References {#refs}
