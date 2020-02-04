@@ -1,10 +1,4 @@
----
-title: "RNotebookExample"
-author: "Alexia Cardona"
-date: "01/10/2019"
----
-
-This report contains the analysis of the gapminder data and contains the results of the top Countries with the largest life expectancy in Europe.  The analysis is based on data from 2007.  The report also analyzes how love expectancy changed over the years in Europe.  
+This report contains the analysis of the `gapminder` data set and contains the results of the top Countries with the largest life expectancy in Europe.  The analysis is based on data from 2007.  The report also analyzes how life expectancy changed over the years in Europe.  
 
 This report was generated using R and the code to extract the European 2007 data is as follows:
 
@@ -41,21 +35,22 @@ A better way to display this table is with pagination as follows:
 paged_table(euro_data_tbl)
 ```
 
-Next, the life expectacy in Europe is observed across different years.  The aim of this is to check if there was a change in life expectancy over the years.  The data used for the life expectancy over the years analysis is the gapminder data and the following data manipulation was performed:
+Next, the life expectancy in Europe is observed across different years.  The aim of this is to check if there was a change in life expectancy over the years.  The data used for the life expectancy over the years analysis is the gapminder data and the following data manipulation was performed:
 
 ```{r fig-data-chunk}
 #keep on European data and change year to factor
 euro_data_fig <- pop_data %>% 
                     filter(continent == "Europe")  %>% 
-                    mutate(year=as.factor(year))
+                    mutate(year = as_factor(year))
 ```
 
-The life expactency over the years is plotted as following:
+The life expectancy over the years is plotted as following:
 
 ```{r fig-chunk, fig.cap="Life Expectancy in Europe over the years"}
 euro_data_fig %>%
-  ggplot(mapping=aes(x=year, y=lifeExp)) +
-    geom_violin()
+  ggplot(mapping = aes(x = year, y = lifeExp)) +
+  geom_violin() +
+  stat_summary(fun.y = median, geom = "point")
 ```
 
 

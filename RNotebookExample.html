@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Alexia Cardona" />
 
-<meta name="date" content="2019-01-10" />
 
-<title>RNotebookExample</title>
+<title></title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -237,6 +234,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -280,7 +278,7 @@ $(document).ready(function () {
   <a href="rmarkdown.html">Rmarkdown</a>
 </li>
 <li>
-  <a href="git.html">GitHub</a>
+  <a href="git.html">Git</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -294,14 +292,11 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">RNotebookExample</h1>
-<h4 class="author">Alexia Cardona</h4>
-<h4 class="date">01/10/2019</h4>
 
 </div>
 
 
-<p>This report contains the analysis of the gapminder data and contains the results of the top Countries with the largest life expectancy in Europe. The analysis is based on data from 2007. The report also analyzes how love expectancy changed over the years in Europe.</p>
+<p>This report contains the analysis of the <code>gapminder</code> data set and contains the results of the top Countries with the largest life expectancy in Europe. The analysis is based on data from 2007. The report also analyzes how life expectancy changed over the years in Europe.</p>
 <p>This report was generated using R and the code to extract the European 2007 data is as follows:</p>
 <pre class="r"><code>#load tidyverse library
 library(tidyverse) # used for data manipulation
@@ -769,15 +764,16 @@ Turkey
 {"columns":[{"label":["Country"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Population Size"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Life Expectancy"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["GDP"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Iceland","2":"301931","3":"81.757","4":"36180.789"},{"1":"Switzerland","2":"7554661","3":"81.701","4":"37506.419"},{"1":"Spain","2":"40448191","3":"80.941","4":"28821.064"},{"1":"Sweden","2":"9031088","3":"80.884","4":"33859.748"},{"1":"France","2":"61083916","3":"80.657","4":"30470.017"},{"1":"Italy","2":"58147733","3":"80.546","4":"28569.720"},{"1":"Norway","2":"4627926","3":"80.196","4":"49357.190"},{"1":"Austria","2":"8199783","3":"79.829","4":"36126.493"},{"1":"Netherlands","2":"16570613","3":"79.762","4":"36797.933"},{"1":"Greece","2":"10706290","3":"79.483","4":"27538.412"},{"1":"Belgium","2":"10392226","3":"79.441","4":"33692.605"},{"1":"United Kingdom","2":"60776238","3":"79.425","4":"33203.261"},{"1":"Germany","2":"82400996","3":"79.406","4":"32170.374"},{"1":"Finland","2":"5238460","3":"79.313","4":"33207.084"},{"1":"Ireland","2":"4109086","3":"78.885","4":"40675.996"},{"1":"Denmark","2":"5468120","3":"78.332","4":"35278.419"},{"1":"Portugal","2":"10642836","3":"78.098","4":"20509.648"},{"1":"Slovenia","2":"2009245","3":"77.926","4":"25768.258"},{"1":"Czech Republic","2":"10228744","3":"76.486","4":"22833.309"},{"1":"Albania","2":"3600523","3":"76.423","4":"5937.030"},{"1":"Croatia","2":"4493312","3":"75.748","4":"14619.223"},{"1":"Poland","2":"38518241","3":"75.563","4":"15389.925"},{"1":"Bosnia and Herzegovina","2":"4552198","3":"74.852","4":"7446.299"},{"1":"Slovak Republic","2":"5447502","3":"74.663","4":"18678.314"},{"1":"Montenegro","2":"684736","3":"74.543","4":"9253.896"},{"1":"Serbia","2":"10150265","3":"74.002","4":"9786.535"},{"1":"Hungary","2":"9956108","3":"73.338","4":"18008.944"},{"1":"Bulgaria","2":"7322858","3":"73.005","4":"10680.793"},{"1":"Romania","2":"22276056","3":"72.476","4":"10808.476"},{"1":"Turkey","2":"71158647","3":"71.777","4":"8458.276"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-<p>Next, the life expectacy in Europe is observed across different years. The aim of this is to check if there was a change in life expectancy over the years. The data used for the life expectancy over the years analysis is the gapminder data and the following data manipulation was performed:</p>
+<p>Next, the life expectancy in Europe is observed across different years. The aim of this is to check if there was a change in life expectancy over the years. The data used for the life expectancy over the years analysis is the gapminder data and the following data manipulation was performed:</p>
 <pre class="r"><code>#keep on European data and change year to factor
 euro_data_fig &lt;- pop_data %&gt;% 
                     filter(continent == &quot;Europe&quot;)  %&gt;% 
-                    mutate(year=as.factor(year))</code></pre>
-<p>The life expactency over the years is plotted as following:</p>
+                    mutate(year = as_factor(year))</code></pre>
+<p>The life expectancy over the years is plotted as following:</p>
 <pre class="r"><code>euro_data_fig %&gt;%
-  ggplot(mapping=aes(x=year, y=lifeExp)) +
-    geom_violin()</code></pre>
+  ggplot(mapping = aes(x = year, y = lifeExp)) +
+  geom_violin() +
+  stat_summary(fun.y = median, geom = &quot;point&quot;)</code></pre>
 <div class="figure">
 <img src="RNotebookExample_files/figure-html/fig-chunk-1.png" alt="Life Expectancy in Europe over the years" width="672" />
 <p class="caption">
