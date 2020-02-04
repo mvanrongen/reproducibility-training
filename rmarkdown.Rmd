@@ -463,7 +463,7 @@ Alternatively, you can type the r code chunk.  The R code should be placed in be
 [RNotebookExample.Rmd](RNotebookExample.Rmd) uses data from [gapminder](https://www.gapminder.org/).  Let us download the `gapminder_data.csv` dataset into our project.  Create a `data` folder in your working directory.  Download the dataset into the `data` folder as follows:
 
 ```
-download.file(url="https://github.com/cambiotraining/reproducibility-training/blob/master/data/gapminder_data.csv", destfile="data/gapminder_data.csv")
+download.file(url="https://raw.githubusercontent.com/cambiotraining/reproducibility-training/master/data/gapminder_data.csv", destfile="data/gapminder_data.csv")
 ```
 
 The `gapminder_data.csv` dataset that is loaded into the notebook contains the life expectancy and GDP per capita  data for each country per year from 1952 to 2007.  The dataset has the following columns:  
